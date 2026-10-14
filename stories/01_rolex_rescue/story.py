@@ -26,6 +26,12 @@ class LunchWallet:
         self.balance = self.balance - amount
         return True
 
+    def top_up(self, amount):  # EXTENSION 2: mum sends lunch money.
+        if amount <= 0:
+            return False  # Refused politely; the balance stays exactly the same.
+        self.balance = self.balance + amount  # The setter re-checks the rule.
+        return True
+
 
 # ACT 2: Meal states WHAT every menu item must do; children supply HOW.
 class Meal(ABC):
@@ -56,6 +62,14 @@ class Kikomando(Meal):  # Two children of Meal: hierarchical inheritance.
         return 2500
 
 
+class Juice(Meal):  # EXTENSION 1: a third child of Meal, same contract.
+    def __init__(self):
+        super().__init__("Passion juice")  # Reuse Meal's constructor like Rolex.
+
+    def price(self):
+        return 1500  # Fixed price; buy() and show_menu() need no changes.
+
+
 class AvocadoRolex(Rolex):  # Meal -> Rolex -> AvocadoRolex: multilevel.
     def __init__(self):
         super().__init__(eggs=2)
@@ -63,6 +77,15 @@ class AvocadoRolex(Rolex):  # Meal -> Rolex -> AvocadoRolex: multilevel.
 
     def price(self):
         return super().price() + 500  # Extend a working parent's method.
+
+
+class GroundnutRolex(Rolex):  # EXTENSION 6: Meal -> Rolex -> GroundnutRolex.
+    def __init__(self):
+        super().__init__(eggs=2)
+        self.name = "Groundnut rolex"
+
+    def price(self):
+        return super().price() + 700  # A normal rolex plus the groundnut topping.
 
 
 # ACT 3: A small extra ability; two parents deliberately offer the SAME method.
@@ -85,6 +108,16 @@ class HomePackedLunch:  # Unrelated to Meal; still has the behaviour we need.
         return "Home-packed lunch: the auntie sponsorship package."
 
 
+class FreeBanana:  # EXTENSION 3: also unrelated to Meal, not even a subclass.
+    name = "Free banana"
+
+    def price(self):
+        return 0  # buy() treats a zero price as free; nothing is charged.
+
+    def describe(self):
+        return "Free banana: from home, so it costs nothing."
+
+
 # ACT 4: The customer HAS-A wallet, rather than IS-A wallet.
 class LunchBreak:
     def __init__(self, student, money):
@@ -103,10 +136,23 @@ class LunchBreak:
             return f"{self.student} gets {meal.name}. Lunch is saved!"
         return f"{self.student}: {meal.name} is over budget. We shall admire it."
 
+    def receipt(self):  # EXTENSION 5: a readable, read-only summary.
+        names = ", ".join(meal.name for meal in self._orders)
+        if not names:
+            names = "nothing yet"
+        return (f"Receipt for {self.student}: {self.order_count} order(s) "
+                f"({names}); balance left UGX {self.wallet.balance:,}.")
+
 
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
     for item in items:
         print(item.describe())  # Polymorphism: SAME call, DIFFERENT results.
+
+
+def show_affordable(items, budget):  # EXTENSION 4: window-shopping, no buying.
+    for item in items:
+        if item.price() <= budget:  # Read-only: compare, print, change nothing.
+            print(item.describe())
 
 
 # ACT 5: The complete story, from the first choice to the ending.
