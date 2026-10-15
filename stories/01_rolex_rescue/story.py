@@ -130,3 +130,16 @@ def main():
 # This familiar run guard stops the story running when imported for checking.
 if __name__ == "__main__":
     main()
+
+# Extension 06 - GroundNutRolex 
+
+menu = [
+    Rolex()
+    Kikomando()
+    FeaturedRolex()
+    HomePackedLunch()
+    Juice()
+    GroundNutRolex()
+    ]
+
+    print(sarah.buy(menu[5]))
