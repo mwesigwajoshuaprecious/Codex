@@ -126,7 +126,12 @@ class LunchBreak:
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
     for item in items:
         print(item.describe())  # Polymorphism: SAME call, DIFFERENT results.
-
+        
+#extension 4
+def show_affordable(items, budget):
+    for item in items:
+        if item.price() <= budget:
+            print(item.describe())
 
 def show_affordable(items, budget):  # EXTENSION 4: window-shopping, no buying.
     for item in items:
