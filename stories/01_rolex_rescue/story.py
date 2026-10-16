@@ -148,7 +148,7 @@ menu = [
     Juice()
 ]
 
-print(Sarah.buy(menu[4]))
+print(sarah.buy(menu[4]))
 
 class Juice(Meal):
     def __init__(self):
