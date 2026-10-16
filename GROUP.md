@@ -13,9 +13,9 @@ A five-person group completes five different extensions. A six-person group comp
 | Member 1 |Mwesigwa Joshua | B34592| mwesigwajoshuaprecious|1 |mwesigwa_joshua-b34592 |
 | Member 1 |Mwesigwa Joshua Precious | B34592| mwesigwajoshuaprecious|1 |mwesigwa_joshua-b34592 |
 | Member 2 | Kamukama Hope| b35401| kamukamahope|4 |hope-b35401 |
-| Member 3 | | | | | |
-| Member 4 | | | | | |
-| Member 5 | | | | | |
+| Member 3 | Nsubuga Edrine| B34863|NsubugaEdrine| 5 |Gitedryne |
+| Member 4 | Ariko Eric|b36048 |jace-eric |6 |Ariko-Eric-b36048 |
+| Member 5 |Kakande Stacey |b35004 |StaceyKakande | 2| stacey-s25b13-079|
 | Member 6 | | | | | |
 
 ## Run our work
