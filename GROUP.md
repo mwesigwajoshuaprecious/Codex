@@ -11,6 +11,7 @@ A five-person group completes five different extensions. A six-person group comp
 | Member name | University access number | GitHub username | Extension number | Personal branch | Merged PR link |
 |---|---|---|---|---|---|
 | Member 1 |Mwesigwa Joshua | B34592| mwesigwajoshuaprecious|1 |mwesigwa_joshua-b34592 |
+| Member 1 |Mwesigwa Joshua Precious | B34592| mwesigwajoshuaprecious|1 |mwesigwa_joshua-b34592 |
 | Member 2 | Kamukama Hope| b35401| kamukamahope|4 |hope-b35401 |
 | Member 3 | | | | | |
 | Member 4 | | | | | |
