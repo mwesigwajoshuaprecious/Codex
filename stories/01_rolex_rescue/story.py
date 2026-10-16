@@ -161,6 +161,18 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Extension 06 - GroundNutRolex 
+
+menu = [
+    Rolex()
+    Kikomando()
+    FeaturedRolex()
+    HomePackedLunch()
+    Juice()
+    GroundNutRolex()
+    ]
+
+    print(sarah.buy(menu[5]))
 
 # Extension 1: Passion juice
 # Add Juice as a subclass of Meal. Its price is UGX 1,500. Put it in the menu 
