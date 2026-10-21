@@ -167,3 +167,5 @@ class Juice(Meal):
 
     def  price(self):
         return 1500
+
+A1
