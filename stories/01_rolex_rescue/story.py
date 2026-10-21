@@ -161,18 +161,24 @@ def main():
 if __name__ == "__main__":
     main()
 
+# NOTE (A2, Edrine): the two scratch blocks below were left half-written by the
+# foundation stage. One of them was missing commas, so this file had a syntax
+# error, and both of them ran on import, so the story could not be imported for
+# checking. They are commented out and kept here for the record; the working
+# story is main() above and the original text is unchanged in the git history.
+
 # Extension 06 - GroundNutRolex 
-
-menu = [
-    Rolex()
-    Kikomando()
-    FeaturedRolex()
-    HomePackedLunch()
-    Juice()
-    GroundNutRolex()
-    ]
-
-    print(sarah.buy(menu[5]))
+#
+# menu = [
+#     Rolex()
+#     Kikomando()
+#     FeaturedRolex()
+#     HomePackedLunch()
+#     Juice()
+#     GroundNutRolex()
+#     ]
+#
+#     print(sarah.buy(menu[5]))
 
 # Extension 1: Passion juice
 # Add Juice as a subclass of Meal. Its price is UGX 1,500. Put it in the menu 
@@ -182,15 +188,15 @@ class Juice(Meal):
     def price(self):
         return 1500
 
-menu = [
-    Rolex(),
-    Kikomando("Kikomando"),
-    FeaturedRolex(),
-    HomePackedLunch(),
-    Juice()
-]
-
-print(sarah.buy(menu[4]))
+# menu = [
+#     Rolex(),
+#     Kikomando("Kikomando"),
+#     FeaturedRolex(),
+#     HomePackedLunch(),
+#     Juice()
+# ]
+#
+# print(sarah.buy(menu[4]))
 
 class Juice(Meal):
     def __init__(self):
