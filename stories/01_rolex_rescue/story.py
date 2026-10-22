@@ -97,6 +97,26 @@ class HomePackedLunch:  # Unrelated to Meal; still has the behaviour we need.
         return "Home-packed lunch: the auntie sponsorship package."
 
 
+def create_choice(key, **settings):
+    """Create a choice using 'rolex', 'kikomando' or 'home_packed_lunch'.
+
+    Rolex accepts the optional setting eggs (default 2). The other choices
+    accept no settings.
+    """
+    if key == "rolex":
+        return Rolex(**settings)
+    if key == "kikomando":
+        return Kikomando("Kikomando", **settings)
+    if key == "home_packed_lunch":
+        if settings:
+            unexpected = next(iter(settings))
+            raise TypeError(f"Home-packed lunch does not accept setting {unexpected!r}.")
+        return HomePackedLunch()
+    raise ValueError(
+        f"Unknown choice key {key!r}. Choose 'rolex', 'kikomando' or 'home_packed_lunch'."
+    )
+
+
 # ACT 4: The customer HAS-A wallet, rather than IS-A wallet.
 class LunchBreak:
     def __init__(self, student, money):
@@ -126,12 +146,6 @@ class LunchBreak:
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
     for item in items:
         print(item.describe())  # Polymorphism: SAME call, DIFFERENT results.
-        
-#extension 4
-def show_affordable(items, budget):
-    for item in items:
-        if item.price() <= budget:
-            print(item.describe())
 
 def show_affordable(items, budget):  # EXTENSION 4: window-shopping, no buying.
     for item in items:
@@ -142,7 +156,12 @@ def show_affordable(items, budget):  # EXTENSION 4: window-shopping, no buying.
 # ACT 5: The complete story, from the first choice to the ending.
 def main():
     print("=== THE ROLEX RESCUE ===")
-    menu = [Rolex(), Kikomando("Kikomando"), FeaturedRolex(), HomePackedLunch()]
+    menu = [
+        create_choice("rolex"),
+        create_choice("kikomando"),
+        FeaturedRolex(),
+        create_choice("home_packed_lunch"),
+    ]
     show_menu(menu)  # The unrelated packed lunch works too: duck typing.
     sarah = LunchBreak("Sarah", 5000)
     joel = LunchBreak("Joel", 3000)  # A second object has a DIFFERENT wallet.
@@ -160,41 +179,3 @@ def main():
 # This familiar run guard stops the story running when imported for checking.
 if __name__ == "__main__":
     main()
-
-# Extension 06 - GroundNutRolex 
-
-menu = [
-    Rolex()
-    Kikomando()
-    FeaturedRolex()
-    HomePackedLunch()
-    Juice()
-    GroundNutRolex()
-    ]
-
-    print(sarah.buy(menu[5]))
-
-# Extension 1: Passion juice
-# Add Juice as a subclass of Meal. Its price is UGX 1,500. Put it in the menu 
-# and buy it through LunchBreak.buy(). Do not change buy() or show_menu().
-
-class Juice(Meal):
-    def price(self):
-        return 1500
-
-menu = [
-    Rolex(),
-    Kikomando("Kikomando"),
-    FeaturedRolex(),
-    HomePackedLunch(),
-    Juice()
-]
-
-print(sarah.buy(menu[4]))
-
-class Juice(Meal):
-    def __init__(self):
-        super().__init__("Passion Juice")
-
-    def  price(self):
-        return 1500
