@@ -179,3 +179,79 @@ def main():
 # This familiar run guard stops the story running when imported for checking.
 if __name__ == "__main__":
     main()
+
+# NOTE (A2, Edrine): the two scratch blocks below were left half-written by the
+# foundation stage. One of them was missing commas, so this file had a syntax
+# error, and both of them ran on import, so the story could not be imported for
+# checking. They are commented out and kept here for the record; the working
+# story is main() above and the original text is unchanged in the git history.
+
+# Extension 06 - GroundNutRolex 
+#
+# menu = [
+#     Rolex()
+#     Kikomando()
+#     FeaturedRolex()
+#     HomePackedLunch()
+#     Juice()
+#     GroundNutRolex()
+#     ]
+#
+#     print(sarah.buy(menu[5]))
+
+# Extension 1: Passion juice
+# Add Juice as a subclass of Meal. Its price is UGX 1,500. Put it in the menu 
+# and buy it through LunchBreak.buy(). Do not change buy() or show_menu().
+
+class Juice(Meal):
+    def price(self):
+        return 1500
+
+# menu = [
+#     Rolex(),
+#     Kikomando("Kikomando"),
+#     FeaturedRolex(),
+#     HomePackedLunch(),
+#     Juice()
+# ]
+#
+# print(sarah.buy(menu[4]))
+
+class Juice(Meal):
+    def __init__(self):
+        super().__init__("Passion Juice")
+
+    def  price(self):
+        return 1500
+
+
+
+
+#LunchMoney value Object
+
+    def __init__(self, amount):
+        if isinstance(amount, bool) or not isinstance(amount, int) or amount < 0:
+            raise ValueError("LunchMoney requires a non-negative whole number")
+        self._amount = amount
+
+    @property
+    def amount(self):
+        return self._amount
+
+    def __str__(self):
+        return f"UGX {self.amount:,}"
+
+    def __repr__(self):
+        return f"LunchMoney({self.amount})"
+
+    def __eq__(self, other):
+        if not isinstance(other, LunchMoney):
+            return NotImplemented
+        return self.amount == other.amount
+
+    def __add__(self, other):
+        if not isinstance(other, LunchMoney):
+            return NotImplemented
+        return LunchMoney(self.amount + other.amount)
+
+
